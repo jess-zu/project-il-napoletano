@@ -21,6 +21,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Alice&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+        
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -45,96 +47,10 @@
         <h1 class="animate__animated animate__backInDown brand-header">Pizza il Napoletano</h1>
         <h2 class="animate__animated animate__backInLeft">NUESTRAS PIZZAS</h2>
         <ul class="gallery">
-            <li>
-                <div class="box">
-                    <figure> <img src="img/4quesos-540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA CUATRO QUESOS</h3>
-                            <P>$23.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="1" data-price="23000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-            </li>
-            <li>
-                <div class="box">
-                    <figure> <img src="img/albahaca_540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA DE ALBAHACA</h3>
-                            <P>$15.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="2" data-price="15000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure> <img src="img/fugazzetaflow-540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA DE FUGAZZETA</h3>
-                            <P>$17.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="3" data-price="17000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure> <img src="img/jym-540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA DE JAMON Y MORRON</h3>
-                            <P>$20.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="4" data-price="20000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure> <img src="img/muzza-540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA DE MUZZARELLA</h3>
-                            <P>$15.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="5" data-price="15000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure> <img src="img/napo-540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA NAPOLITANA</h3>
-                            <P>$16.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="6" data-price="16000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
-            <li>
-                <div class="box">
-                    <figure> <img src="img/rucula-540x374.jpeg" alt="muzza">
-                        <figcaption>
-                            <h3>PIZZA DE RUCULA</h3>
-                            <P>$18.000</P>
-                            <time>21/04/2026</time>
-                        </figcaption>
-                    </figure>
-                    <button class="button" value="7" data-price="18000"> Añadir al carrito<i
-                            class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </li>
+            
+
+
+            
         </ul>
         </div>
 
@@ -162,6 +78,52 @@
             <p>&copy;2026 Mi Sitio Web.Todos los derechos reservados.</p>
         </div>
     </footer>
+    <!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/5491162345678?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20pedir%20una%20pizza.%20%C2%BFCu%C3%A1l%20es%20el%20men%C3%BA%20disponible%20y%20hacen%20env%C3%ADos%20a%20domicilio%3F"
+    class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">¡Chateá con nosotros!</span>
+</a>
+<script>
+
+async function cargarProductos() {
+// Cargar el archivo JSON
+try{
+const response = await fetch('products.json');
+const data = await response.json();
+console.log(data);
+const gallery=document.querySelector('.gallery');
+gallery.innerHTML='';
+data.productos.forEach(pizza=>{
+const li=document.createElement('li');
+li.innerHTML = ` <div class="box">
+                    <figure>
+                        <img src="${pizza.imagen}" alt="${pizza.nombre}"/>
+                        <figcaption>
+                            <h3>${pizza.nombre}</h3>
+                            <p>$ ${pizza.precio.toLocaleString('es-AR')}</p>
+                            <time>${pizza.fecha}</time>
+                        </figcaption>
+                    </figure>
+                    <button class="button" value="${pizza.id}" data-price=" ${pizza.precio}">
+                        Añadir al carrito <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>`;
+gallery.appendChild(li);
+}); // End forEach
+
+
+} // End of try
+catch (error){
+console.error('Error al cargar productos:', error);
+}  // End of catch
+} // End of Function
+
+document.addEventListener('DOMContentLoaded',cargarProductos)
+
+
+
+</script>
 
 </body>
 

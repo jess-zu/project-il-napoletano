@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizza il Napoletano</title>
+  <meta name="description" content="Pizza il Napoletano es una pizzería en Argentina inspirada en la tradición italiana. Disfrutá auténticas pizzas napolitanas, elaboradas con ingredientes frescos y el verdadero sabor de Italia." />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Lobster&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red: #e50c39;
+      --dark-red: #c0392b;
+      --green: #0D7139;
+      --teal: #135D76;
+      --dark: #17181a;
+      --nav-color: #333333;
+      --border: #e1e8ee;
+    }
+
+    body {
+      font-family: "Work Sans", sans-serif;
+      background: #fff;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      font-family: "Oswald", sans-serif;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      padding: 0.5rem 1.5rem;
+    }
+
+    .navbar-brand img {
+      height: 70px;
+      width: auto;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--nav-color) !important;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      padding: 0.6rem 1rem !important;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: var(--red);
+      color: #fff !important;
+    }
+
+    .navbar-toggler {
+      border-color: var(--red);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23e50c39' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ── HERO / TITLE ── */
+    .brand-header {
+      font-family: "Lobster", cursive;
+      color: var(--red);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-align: center;
+      padding: 2rem 0 0.5rem;
+      margin: 0;
+    }
+
+    .section-title {
+      font-family: "Oswald", sans-serif;
+      font-weight: 500;
+      color: var(--dark);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* ── PIZZA CARDS ── */
+    .pizza-card {
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pizza-card:hover {
+      box-shadow: 0 8px 28px rgba(229, 12, 57, 0.18);
+      transform: translateY(-4px);
+    }
+
+    .pizza-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pizza-card .card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .pizza-card h3 {
+      font-family: "Oswald", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-align: center;
+      color: var(--dark);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .pizza-card .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+
+    .pizza-card time {
+      display: block;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #1a5b5e;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .btn-cart {
+      background: var(--green);
+      border: none;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: auto;
+    }
+
+    .btn-cart:hover {
+      background: #0a5a2c;
+      transform: scale(1.02);
+    }
+
+    /* ── CART BADGE ── */
+    .cart-btn-nav {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--nav-color);
+      background: none;
+      border: none;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--red);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* ── CART TOAST ── */
+    #cart-toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #f8f9fa;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      padding: 2.5rem 1.5rem 1.5rem;
+      font-family: "Oswald", sans-serif;
+    }
+
+    .footer-nav a {
+      color: var(--nav-color);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--dark-red); }
+
+    .footer-social a {
+      color: var(--nav-color);
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--dark-red); }
+
+    .footer-copy {
+      color: var(--dark-red);
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ── RESPONSIVE TWEAKS ── */
+    @media (max-width: 576px) {
+      .pizza-card img { height: 190px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ░░ NAVBAR ░░ -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="logo-original__4_.webp" alt="Logo Pizza il Napoletano" />
+      </a>
+
+      <div class="d-flex align-items-center order-lg-last gap-1">
+        <!-- Cart icon -->
+        <button class="cart-btn-nav" id="cart-icon-btn" title="Ver carrito">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+        <!-- Toggler -->
+        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">NOSOTROS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">SUCURSALES &amp; DELIVERY</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">CONTACTO</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">PROMOS</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ░░ MAIN ░░ -->
+  <main class="container-fluid px-3 px-md-4">
+
+    <h1 class="brand-header animate__animated animate__backInDown">Pizza il Napoletano</h1>
+    <h2 class="section-title animate__animated animate__backInLeft">NUESTRAS PIZZAS</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 pb-4">
+
+      <!-- 1. Cuatro Quesos -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="4quesos-540x374.jpeg" alt="Pizza Cuatro Quesos" />
+          <div class="card-body">
+            <h3>Pizza Cuatro Quesos</h3>
+            <p class="price">$23.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza Cuatro Quesos" data-price="23000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Albahaca -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="albahaca_540x374.jpeg" alt="Pizza de Albahaca" />
+          <div class="card-body">
+            <h3>Pizza de Albahaca</h3>
+            <p class="price">$15.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza de Albahaca" data-price="15000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Fugazzeta -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="fugazzetaflow-540x374.jpeg" alt="Pizza de Fugazzeta" />
+          <div class="card-body">
+            <h3>Pizza de Fugazzeta</h3>
+            <p class="price">$17.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza de Fugazzeta" data-price="17000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Jamón y Morrón -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="jym-540x374.jpeg" alt="Pizza de Jamón y Morrón" />
+          <div class="card-body">
+            <h3>Pizza de Jamón y Morrón</h3>
+            <p class="price">$20.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza de Jamón y Morrón" data-price="20000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Muzzarella -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="muzza-540x374.jpeg" alt="Pizza de Muzzarella" />
+          <div class="card-body">
+            <h3>Pizza de Muzzarella</h3>
+            <p class="price">$15.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza de Muzzarella" data-price="15000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Napolitana -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="napo-540x374.jpeg" alt="Pizza Napolitana" />
+          <div class="card-body">
+            <h3>Pizza Napolitana</h3>
+            <p class="price">$16.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza Napolitana" data-price="16000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Rúcula -->
+      <div class="col">
+        <div class="pizza-card">
+          <img src="rucula-540x374.jpeg" alt="Pizza de Rúcula" />
+          <div class="card-body">
+            <h3>Pizza de Rúcula</h3>
+            <p class="price">$18.000</p>
+            <time datetime="2026-04-21">21/04/2026</time>
+            <button class="btn-cart" data-name="Pizza de Rúcula" data-price="18000">
+              Añadir al carrito&nbsp;<i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.row -->
+  </main>
+
+  <!-- ░░ CART TOAST ░░ -->
+  <div id="cart-toast" class="toast-container">
+    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body fw-semibold" id="toast-msg">¡Producto agregado!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer>
+    <nav class="footer-nav mb-3">
+      <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 mb-0">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Sucursales &amp; Delivery</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">Promos</a></li>
+        <li><a href="#">Política de Privacidad</a></li>
+      </ul>
+    </nav>
+    <div class="footer-social text-center mb-2">
+      <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://x.com/" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Pizza il Napoletano. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ── Cart logic ──
+    let cartCount = 0;
+    const countEl = document.getElementById('cart-count');
+    const toastEl = document.getElementById('liveToast');
+    const toastMsg = document.getElementById('toast-msg');
+    const bsToast = new bootstrap.Toast(toastEl, { delay: 2000 });
+
+    document.querySelectorAll('.btn-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cartCount++;
+        countEl.textContent = cartCount;
+        toastMsg.textContent = `"${btn.dataset.name}" agregada al carrito 🍕`;
+        bsToast.show();
+      });
+    });
+  </script>
+
+</body>
+</html>
