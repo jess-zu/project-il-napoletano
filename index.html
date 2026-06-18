@@ -21,9 +21,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Alice&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
-        
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Quattrocento:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -47,10 +49,10 @@
         <h1 class="animate__animated animate__backInDown brand-header">Pizza il Napoletano</h1>
         <h2 class="animate__animated animate__backInLeft">NUESTRAS PIZZAS</h2>
         <ul class="gallery">
-            
 
 
-            
+
+
         </ul>
         </div>
 
@@ -79,26 +81,49 @@
         </div>
     </footer>
     <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/5491162345678?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20pedir%20una%20pizza.%20%C2%BFCu%C3%A1l%20es%20el%20men%C3%BA%20disponible%20y%20hacen%20env%C3%ADos%20a%20domicilio%3F"
-    class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">¡Chateá con nosotros!</span>
-</a>
-<script>
+    <a href="https://wa.me/5491162345678?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20pedir%20una%20pizza.%20%C2%BFCu%C3%A1l%20es%20el%20men%C3%BA%20disponible%20y%20hacen%20env%C3%ADos%20a%20domicilio%3F"
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">¡Chateá con nosotros!</span>
+    </a>
+    <script>
 
-async function cargarProductos() {
-// Cargar el archivo JSON
-try{
-const response = await fetch('products.json');
-const data = await response.json();
-console.log(data);
-const gallery=document.querySelector('.gallery');
-gallery.innerHTML='';
-data.productos.forEach(pizza=>{
-const li=document.createElement('li');
-li.innerHTML = ` <div class="box">
+        function abrirModal(pizza) {
+
+            Swal.fire({
+
+                title: pizza.nombre,
+                html: ` <img src="${pizza.imagen}"
+                         alt="${pizza.nombre}"
+                         style="width:100%; border-radius:8px; margin-bottom:12px">
+                    <p style="color:#555; font-size:1rem; margin-bottom:12px">
+                        ${pizza.descripcion}
+                    </p>
+                    <p style="color:#135D76; font-size:2rem; font-weight:bold; margin:0">
+                        $ ${pizza.precio.toLocaleString('es-AR')}
+                    </p>  `,
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#0D7139',
+                width: '500px'
+
+            });
+
+
+        }
+
+        async function cargarProductos() {
+            // Cargar el archivo JSON
+            try {
+                const response = await fetch('products.json');
+                const data = await response.json();
+                console.log(data);
+                const gallery = document.querySelector('.gallery');
+                gallery.innerHTML = '';
+                data.productos.forEach(pizza => {
+                    const li = document.createElement('li');
+                    li.innerHTML = ` <div class="box">
                     <figure>
-                        <img src="${pizza.imagen}" alt="${pizza.nombre}"/>
+                        <img class="img-clickeable" src="${pizza.imagen}" alt="${pizza.nombre}"/>
                         <figcaption>
                             <h3>${pizza.nombre}</h3>
                             <p>$ ${pizza.precio.toLocaleString('es-AR')}</p>
@@ -109,21 +134,26 @@ li.innerHTML = ` <div class="box">
                         Añadir al carrito <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                 </div>`;
-gallery.appendChild(li);
-}); // End forEach
+
+                    const img = li.querySelector('.img-clickeable');
+                    img.addEventListener('click', () => abrirModal(pizza));
+                    gallery.appendChild(li);
+
+                    gallery.appendChild(li);
+                }); // End forEach
 
 
-} // End of try
-catch (error){
-console.error('Error al cargar productos:', error);
-}  // End of catch
-} // End of Function
+            } // End of try
+            catch (error) {
+                console.error('Error al cargar productos:', error);
+            }  // End of catch
+        } // End of Function
 
-document.addEventListener('DOMContentLoaded',cargarProductos)
+        document.addEventListener('DOMContentLoaded', cargarProductos)
 
 
 
-</script>
+    </script>
 
 </body>
 

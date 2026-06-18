@@ -1,0 +1,91 @@
+{
+"productos": 
+  [
+  {
+    "id": 1,
+    "nombre": "Pizza muzzarella",
+    "precio": 15000,
+    "fecha": "26/05/2026",
+    "imagen": "img/muzza-540x374.jpeg",
+    "descripcion": "La clasica pizza muzzarella de siempre"
+  },
+
+  {
+    "id": 2,
+    "nombre": "Pizza Cuatro Quesos",
+    "precio": 19000,
+    "fecha": "23/05/2026",
+    "imagen": "img/4quesos-540x374.jpeg",
+    "descripcion": "Combinación perfecta de cuatro quesos premium"
+  },
+
+  {
+    "id": 3,
+    "nombre": "Pizza de Albahaca",
+    "precio": 15000,
+    "fecha": "26/05/2026",
+    "imagen": "img/albahaca_540x374.jpeg",
+    "descripcion": "Una combinación fresca y aromática con salsa de tomate, mozzarella fundida y hojas de albahaca fresca que realzan cada porción con un sabor clásico italiano."
+  },
+
+  {
+    "id": 4,
+    "nombre": "Pizza de Fugazzeta",
+    "precio": 17000,
+    "fecha": "26/05/2026",
+    "imagen": "img/fugazzetaflow-540x374.jpeg",
+    "descripcion": "La clásica fugazzeta porteña con abundante mozzarella derretida, cebolla caramelizada y una masa suave y esponjosa que la convierte en una verdadera tentación."
+  },
+
+  {
+    "id": 5,
+    "nombre": "Pizza de Jamon y Morron",
+    "precio": 20000,
+    "fecha": "26/05/2026",
+    "imagen": "img/jym-540x374.jpeg",
+    "descripcion": "Mozzarella fundida, jamón cocido de primera calidad y morrones asados que aportan un sabor intenso y equilibrado en cada porción."
+  },
+
+  {
+    "id": 6,
+    "nombre": "Pizza Napolitana",
+    "precio": 16000,
+    "fecha": "26/05/2026",
+    "imagen": "img/napo-540x374.jpeg",
+    "descripcion": "Una pizza irresistible con salsa de tomate, mozzarella derretida, rodajas de tomate fresco y un toque de ajo y orégano que resaltan todo su sabor tradicional."
+  },
+
+  {
+    "id": 7,
+    "nombre": "Pizza de Rucula",
+    "precio": 18000,
+    "fecha": "26/05/2026",
+    "imagen": "img/rucula-540x374.jpeg",
+    "descripcion": "Mozzarella fundida, rúcula fresca y un delicado toque de queso parmesano que crean una combinación fresca, intensa y llena de sabor."
+  },
+  {
+    "id": 8,
+    "nombre": "Pizza de Provolonne",
+    "precio": 27000,
+    "fecha": "26/05/2026",
+    "imagen": "img/pizza-provolonne (1).webp",
+    "descripcion": "Nueva pizza para que la disfruten todos."
+  },
+  {
+    "id": 9,
+    "nombre": "Pizza de Panceta",
+    "precio": 34000,
+    "fecha": "16/06/2026",
+    "imagen": "img/pizza-de-panceta.jpg",
+    "descripcion": "Una combinación irresistible con el sabor intenso y ahumado de la panceta. "
+  },
+   {
+    "id": 10,
+    "nombre": "Pizza Copa Mundialista",
+    "precio": 20000,
+    "fecha": "16/06/2026",
+    "imagen": "img/pizza_mundialista-il-napolitano.webp",
+    "descripcion": "Pizza familiar para los campeones del mundo."
+}
+]
+}
