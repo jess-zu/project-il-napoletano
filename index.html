@@ -88,6 +88,12 @@
     </a>
     <script>
 
+        let preciosCarrito = [
+
+
+
+        ];
+
         function abrirModal(pizza) {
 
             Swal.fire({
@@ -108,7 +114,18 @@
 
             });
 
+        }
 
+        function calcularPrecio(pizza) {
+            preciosCarrito.push(pizza.precio);
+            console.log(`Precios en el carrito: $${preciosCarrito}`);
+            let total = 0;
+            preciosCarrito.forEach(precio => {
+                total = total+precio;
+
+            });
+
+            console.log(total);
         }
 
         async function cargarProductos() {
@@ -134,12 +151,13 @@
                         Añadir al carrito <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                 </div>`;
-
+                    // Invoca la función para que funcione (?) y muestre el modal/pestaña
                     const img = li.querySelector('.img-clickeable');
                     img.addEventListener('click', () => abrirModal(pizza));
+                    // Añade <li>'s al <ul class=gallery)
                     gallery.appendChild(li);
-
-                    gallery.appendChild(li);
+                    const btn = li.querySelector('.button');
+                    btn.addEventListener('click', () => calcularPrecio(pizza));
                 }); // End forEach
 
 
